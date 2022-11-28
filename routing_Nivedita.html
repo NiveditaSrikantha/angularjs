@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<script>
+    var myApp=angular.module('myApp',['ui.router']);
+
+myApp.config(function($stateProvider,$urlRouterProvider){
+    $urlRouterProvider.otherwise('/items');
+
+    $stateProvider
+        .state('items',{
+
+            url: '/items',
+            template: '  <center> <h1>Registration Form</h1> </center><br><br>  <br><br><a ui-sref=".list" class="btn btn-success">Different Types of Branches</a>   &nbsp &nbsp &nbsp <a ui-sref=".info" class="btn btn-success">Description </a><br><br></div><div ui-view></div>  '
+        })
+        .state('items.list',{
+            url: '/list/id',
+             template:'<div> <ul> <li ng-repeat="item in lists"> {{item.id}} - {{item.name}}</li> </ul> </div>',
+            controller:['$scope',function($scope){
+                $scope.lists=[
+                    {
+                        
+                        name:'Computer Science Engineering' 
+                    },
+                    {
+                     
+                        name:'Mechanical Engineering'
+                    },
+                    {
+                       
+                        name:'Civil  Engineering'
+                    },
+                    {
+                      
+                        name:'Electrical Engineering'
+                    }
+            ]}]     
+        })
+        .state('items.info',{
+            url: '/posts.info',
+            template:'<h2>Why Engineering ???</h2><br><div class="row"><div class="column">  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTeW0qxTiGQXvskrXvNGMJxqS4hayHpqCQoH-irkeNvnNSajYHMH9svAj_Rz3FtJ0rGziDJe3nPMQ&usqp=CAU" alt="Snow" style="width:100%"></div><div class="column"><img src= https://lh3.googleusercontent.com/proxy/r-kRCcNlmo5c-JFRqTVwOcHrzrtOoc-e_0X_f-TvOT71mnsYIWRC9AlssuGLDdFwhj28Do6cZKwMBerzys-kTJCGGSHZjnT5tQ alt="Forest" style="width:100%"></div> <div class="column"> <img src="https://wherewomenwork.s3-eu-west-1.amazonaws.com/insight/engineering-2-23.jpg" alt="Mountains" style="width:100%"> </div></div><div></div>  '
+        })
+		
+		 
+});//myAppconfig end 
+</script>
+<body>
+
+<div class="1">
+    <nav class="navbar navbar-dark bg-primary" role="navigation" >
+        <div class="navbar-header">
+       
+	  <br>
+        </div>
+       </div>
+      </nav><br>
+    <div class="container">
+    <div ui-view></div>
+    </div>
+
+</body>
+</html>
